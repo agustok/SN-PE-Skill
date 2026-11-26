@@ -63,7 +63,7 @@ Choose the appropriate mode based on monthly demand vs. line capacity, and apply
    - **Indonesia Launch Mandatory Process (MKG & Postel Label)**: For any product launching in **Indonesia**, you **MUST include MKG** (Manual & Warranty Card / *Manual Kartu Garansi*) insertion in packing, and for **smartphones / wireless devices**, you **MUST include Postel (SDPPI) label** printing/application & verification in the `Process & Manpower` stations (even if omitted from the overseas customer SOP). Flag if artwork/spec is missing in the `Customer Clarification List`.
    - Balance bottleneck stations (e.g., parallel test stations or merged low-CT stations) to achieve target **LOB ≥ 80–85%** and **Line Productivity 92%–95%**.
 4. Compute **Section & Total Line Balance Summary**: `DL`, `C/T sum (s)`, `NT max (s)`, `UPH`, `LOB`, `UPPH`, and `FPY`.
-5. Compute **IDL per line per shift** using the 9-role FATP standard (Line leader, Supporter, IQC, IPQC, OQC, Material handler, Packing boy, Repair technician, TE / ME) and verify `IDL / DL ratio ≤ 30%` target.
+5. Compute **IDL per line per shift**: size IDL at **approximately 30% of total DL (`IDL / DL ≈ 30%`)**, mapped across the 9-role FATP standard (Line leader, Supporter, IQC, IPQC, OQC, Material handler, Packing boy, Repair technician, TE / ME). If the 9-role baseline exceeds 30% on a smaller line, combine/share roles to keep `IDL / DL ≈ 30%`.
 
 ### Step 4: Equipment, Fixtures & Auxiliaries Sizing (ST/CT-Driven)
 1. **Source**: Read the **customer-provided Equipment List** first; if incomplete or not provided, extract every required equipment, tester, jig/fixture, and tool directly from the **SOP** and **Testing Plan**.

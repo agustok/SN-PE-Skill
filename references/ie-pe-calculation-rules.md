@@ -39,10 +39,11 @@ Customer SOPs frequently cover assembly and testing (`P1..Pn`) but omit packing 
    - For **smartphones** (and wireless/RF devices) launching in Indonesia, **Postel (SDPPI) label** printing/application and verification **must** be included in the `Process & Manpower` stations (and `Label printer` accounted for in `Equipment & Aux`).
    - Add missing Packing SOP, MKG, or Postel label artwork/spec to the **Customer Clarification List**.
 
-## 4. Indirect Labor (IDL) Standard & Ratio
-- Standard 9-role FATP IDL baseline per line per shift (12 IDL total for full line; scale down proportionally for low-volume shared lines):
+## 4. Indirect Labor (IDL) Standard & Ratio (`IDL / DL ≈ 30%`)
+- **Sizing Rule**: Calculate **IDL at approximately 30% of total DL** (`IDL / DL ≈ 30%`, i.e., `IDL ≈ ROUND(DL × 0.30, 0)`).
+- Distribute the IDL headcount across the 9-role FATP standard per line per shift (12 IDL baseline for a ~40 DL full line):
   - `Line leader` (1), `Supporter` (1), `IQC` (1), `IPQC` (1), `OQC` (1), `Material handler` (2), `Packing boy` (2), `Repair technician` (1), `TE / ME` (2).
-- **Target IDL / DL Ratio**: `≤ 30%`. If `IDL / DL > 30%`, add a remark recommending multi-line sharing or combined roles (e.g., combined IQC/IPQC/OQC or shared TE/ME).
+- On smaller or low-volume lines where 12 IDL would exceed `30%` of DL, scale down by combining or sharing roles across lines (e.g., combined IQC/IPQC/OQC, shared TE/ME, shared Material handler/Packing boy) so that `IDL / DL` stays around **30%**.
 
 ## 5. Equipment, Jigs & Consignment Rules (ST/CT-Driven)
 - **Source Priority**:

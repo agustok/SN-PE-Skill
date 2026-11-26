@@ -2,12 +2,12 @@
 
 **Industrial Engineering (IE) & Production Engineering (PE) Skill for FATP Draft RFQ / Quotation Generation**
 
-`SN-PE-Skill` enables AI assistants (**Claude**, **ChatGPT**, and **Antigravity**) to ingest customer RFQ packages (SOP, BOM, Drawings, Testing Plans, Forecasts, SKU Lists) and automatically generate a standardized **FATP Production Requirement Summary (`.xlsx`)** in **Standard English**, complete with:
-- Capacity & line sizing (or low-volume run-day batching)
-- Station-by-station line balancing, Takt Time, UPH, UPPH, LOB, and FPY
-- Direct Labor (DL) & 9-role Indirect Labor (IDL) headcount sizing
-- Equipment, custom jigs/fixtures, and customer consignment vs. factory supply breakdown
-- Missing-data audit & ready-to-send **Customer Clarification List**
+`SN-PE-Skill` is used to **analyze and calculate UPH, DL/IDL, CT (Cycle Time), Investment (Equipment, Jigs & Fixtures, IT/MES, Facility Support), Capacity, and Line Balancing** from customer RFQ packages (SOP, BOM, Drawings, Testing Plans, Forecasts, SKU Lists). It automatically generates a standardized **FATP Production Requirement Summary (`.xlsx`)** in **Standard English**, complete with:
+- **UPH & Capacity Sizing**: Line productivity (92%–95%), 1-line / 1-shift priority (22 working days, 7.16 effective hours/shift), or low-volume run-day batching
+- **CT & Line Balancing**: Station-by-station cycle time (CT), standard time (+10% allowance), Takt Time, LOB, UPPH, FPY, plus mandatory **MKG & Postel label** processes for Indonesia launches
+- **DL / IDL Headcount**: Direct Labor (DL) per section and Indirect Labor (IDL ≈ 30% of DL)
+- **Investment & Equipment Sizing**: ST/CT-driven production/test equipment, custom jigs/fixtures, customer consign vs. factory supply, plus mandatory **IQC, Store, Repair, IT/MES, and General** baseline equipment
+- **Missing-Data Audit**: Automatic **Customer Clarification List** for any missing or ambiguous customer inputs
 
 ---
 
