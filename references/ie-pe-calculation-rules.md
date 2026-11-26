@@ -2,8 +2,9 @@
 
 ## 1. Calendar & Shift Standards
 - **Working days / month**: `22 days` (FATP standard)
-- **Effective hours / shift**: `7.16 hours` (`430 minutes` effective out of 480-minute 8-hour shift, accounting for breaks, 5S, and shift handover)
-- **Shifts / day**: Up to `3 shifts` max capacity per line; round up required shifts via `ROUNDUP(Demand / (Planned_UPH * 7.16 * 22 * Lines), 0)`
+- **Effective hours / shift**: `7.16 hours` (`430 minutes` effective out of an **8-hour workday / 1 shift**, accounting for breaks, 5S, and shift handover)
+- **1 Line + 1 Shift Priority Rule**: If monthly forecast/demand can be fulfilled within **1 line + 1 shift** (`Planned UPH × 7.16 h × 22 days`), **always prioritize 1 line + 1 shift**. Only add shifts (2–3 shifts) or extra lines when demand exceeds 1-line, 1-shift capacity.
+- **Shifts / day**: Up to `3 shifts` max capacity per line; calculate required shifts via `ROUNDUP(Demand / (Planned_UPH * 7.16 * 22 * Lines), 0)`
 - **Standard Time Allowance**: `10%` (`0.10`) for fatigue, personal, and minor delay:
   $$\text{Std Time (s)} = \text{Avg Time (s)} \times (1 + 0.10)$$
 
@@ -30,12 +31,13 @@
 - **First Pass Yield (FPY)**:
   $$\text{Total FPY} = \prod_{i} \text{FPY}_i = \exp\left(\sum_i \ln(\text{FPY}_i)\right)$$
 
-## 3. Packing Estimation Rule
-Customer SOPs frequently cover assembly and testing (`P1..Pn`) but omit packing (`PK1..PKn`).
-When packing is missing from the SOP:
-1. Add standard FATP packing stations (`PK1..PKn`): device label/IMEI scan, accessory pre-kitting, unit bagging/case, giftbox loading, giftbox weighing & scan, giftbox label & seal, carton packing & label, carton sealing & palletizing/MES pack-out.
-2. Mark `工序名称 (SOP)` as `(SOP 无)` / `(Not in SOP)` and clearly note in `Summary` that Packing DL is an **FATP estimate**.
-3. Add the missing Packing SOP / packaging spec to the **Customer Clarification List**.
+## 3. Packing Estimation & Indonesia Regulatory Process Rules
+Customer SOPs frequently cover assembly and testing (`P1..Pn`) but omit packing (`PK1..PKn`) or local Indonesia regulatory steps.
+1. **Packing Estimation**: When packing is missing from the SOP, add standard FATP packing stations (`PK1..PKn`): device label/IMEI scan, accessory pre-kitting, unit bagging/case, giftbox loading, giftbox weighing & scan, giftbox label & seal, carton packing & label, carton sealing & palletizing/MES pack-out. Mark `工序名称 (SOP)` as `(SOP 无)` / `(Not in SOP)` and note in `Summary` that Packing DL is an **FATP estimate**.
+2. **Indonesia Launch Mandatory Process (`MKG` & `Postel` Label)**:
+   - For **any product launching in Indonesia**, **MKG** (Manual & Warranty Card / *Manual Kartu Garansi*) insertion **must** be included in the packing process.
+   - For **smartphones** (and wireless/RF devices) launching in Indonesia, **Postel (SDPPI) label** printing/application and verification **must** be included in the `Process & Manpower` stations (and `Label printer` accounted for in `Equipment & Aux`).
+   - Add missing Packing SOP, MKG, or Postel label artwork/spec to the **Customer Clarification List**.
 
 ## 4. Indirect Labor (IDL) Standard & Ratio
 - Standard 9-role FATP IDL baseline per line per shift (12 IDL total for full line; scale down proportionally for low-volume shared lines):

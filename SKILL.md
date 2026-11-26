@@ -40,14 +40,16 @@ Scan all provided customer files and extract:
 
 ### Step 2: Select Capacity Planning Mode & Line Productivity
 Choose the appropriate mode based on monthly demand vs. line capacity, and apply the **92%–95% Line Productivity setting** (default `93%` or `92%–95%` range unless customer specifies otherwise) to convert theoretical/SOP UPH into realistic planned output:
+- **1 Line + 1 Shift Priority Rule**:
+  - Always prioritize **1 line + 1 shift (8-hour workday / 7.16 effective hours)** whenever monthly demand can be fulfilled within `1 line × 1 shift × 22 working days` (`Planned UPH × 7.16 × 22`). Only scale to 2–3 shifts or additional lines when demand exceeds 1-line, 1-shift capacity.
 - **Effective Planned UPH / Capacity**:
   - `Planned UPH (with productivity) = Line UPH × Line Productivity (92%–95%)` (or apply `92%–95%` productivity factor to shift/monthly output).
 - **Mode A — Full-Line / Multi-Shift Capacity Sizing** (default for medium/high volume, e.g., smartphones or continuous lines):
-  - Calculate `Max capacity / line / month (3 shifts) = Planned UPH × 7.16 h × 22 days × 3 shifts` (reflecting 92%–95% line productivity).
-  - Calculate `Lines required = ROUNDUP(Planning demand / Max capacity per line, 0)`.
-  - Calculate `Shifts / day required` and `Line utilization (%)`.
-- **Mode B — Low-Volume Run-Day Batching** (when monthly demand fits within 1 line in fewer than 22 run days, e.g., 2K–10K pcs/month):
-  - Set `Lines required = 1` and `Target UPH` (station-balanced with 92%–95% productivity).
+  - Calculate `1-shift capacity / line / month = Planned UPH × 7.16 h × 22 days` and `Max capacity / line / month (3 shifts) = Planned UPH × 7.16 h × 22 days × 3 shifts`.
+  - Calculate `Lines required = ROUNDUP(Planning demand / Max capacity per line, 0)` and `Shifts / day required = ROUNDUP(Planning demand / (Planned UPH × 7.16 × 22 × Lines), 0)` (will naturally resolve to `1 line, 1 shift` whenever demand fits).
+  - Calculate `Line utilization (%)`.
+- **Mode B — Low-Volume Run-Day Batching** (when monthly demand fits within 1 line, 1 shift in fewer than 22 run days, e.g., 2K–10K pcs/month):
+  - Set `Lines required = 1`, `Shifts / day = 1`, and `Target UPH` (station-balanced with 92%–95% productivity).
   - Calculate `Output / shift (pcs) = Target UPH × 7.16`.
   - Calculate `Run days / month (1 shift) = ROUNDUP(Monthly demand / Output per shift, 0)`.
   - Calculate `Line loading = Run days / 22`, `Total headcount / run day`, and `Man-days / month`.
@@ -58,6 +60,7 @@ Choose the appropriate mode based on monthly demand vs. line capacity, and apply
 2. Compute SOP baseline: `NT (SOP) = Std time / DL (SOP)` and `UPH (SOP) = 3600 / NT (SOP)`.
 3. Propose balanced operations (`Op (proposed)`, `Proposed DL`) to:
    - Include **Packing** stations (`PK1..PKn`) if omitted from customer SOP (flag as FATP estimate).
+   - **Indonesia Launch Mandatory Process (MKG & Postel Label)**: For any product launching in **Indonesia**, you **MUST include MKG** (Manual & Warranty Card / *Manual Kartu Garansi*) insertion in packing, and for **smartphones / wireless devices**, you **MUST include Postel (SDPPI) label** printing/application & verification in the `Process & Manpower` stations (even if omitted from the overseas customer SOP). Flag if artwork/spec is missing in the `Customer Clarification List`.
    - Balance bottleneck stations (e.g., parallel test stations or merged low-CT stations) to achieve target **LOB ≥ 80–85%** and **Line Productivity 92%–95%**.
 4. Compute **Section & Total Line Balance Summary**: `DL`, `C/T sum (s)`, `NT max (s)`, `UPH`, `LOB`, `UPPH`, and `FPY`.
 5. Compute **IDL per line per shift** using the 9-role FATP standard (Line leader, Supporter, IQC, IPQC, OQC, Material handler, Packing boy, Repair technician, TE / ME) and verify `IDL / DL ratio ≤ 30%` target.

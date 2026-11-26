@@ -14,6 +14,7 @@ Whenever customer documents are incomplete, ambiguous, or inconsistent, **do not
 - [ ] Complete assembly SOP with station sequence and step-by-step work instructions
 - [ ] Station cycle times (`Avg time (s)`) and whether allowance is already included
 - [ ] Packing SOP (giftbox, accessories, labels, IMEI/SN scan, carton spec, palletization)
+- [ ] Indonesia regulatory items (if Indonesia launch): **MKG** (Manual & Warranty Card) and **Postel / SDPPI label** (mandatory for smartphones/wireless devices) artwork, spec, and placement
 - [ ] Key / CTQ stations (`★`) and special environmental requirements (ESD, cleanroom class, temperature/humidity, torque specs, glue curing time)
 
 ### 3. Testing Plan & Quality (QA)
