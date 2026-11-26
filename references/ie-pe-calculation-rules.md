@@ -57,3 +57,43 @@ When packing is missing from the SOP:
 - **Propose Customer Consign (`Y/N`)**:
   - `Y`: Dedicated test equipment (e.g., CMW500, audio analyzers, RF shield boxes, test PCs with proprietary SW), golden samples, and custom product-specific jigs/fixtures (`Custom = Y`).
   - `N`: Standard factory/PTSN-supplied production equipment, hand tools, IT/MES hardware, line infrastructure, and consumables.
+- **Shareable (`Y/N`)**:
+  - `Y`: Facility/support equipment shareable across lines or projects (IQC, Store, Repair, General, shared IT).
+  - `N`: Dedicated line/station equipment or consumables.
+
+## 6. Mandatory Baseline Support Equipment (IQC / Store / Repair / IT / General)
+Every FATP draft **must** include the following baseline support equipment outside of the production-line equipment (set `Lines/Cells = 1` for shared facility areas):
+
+| Category | Item Name (SOP/Ref) | Description (EN) | Custom | Baseline Qty | Consign | Shareable |
+|---|---|---|---|---|---|---|
+| `IT / MES` | 电脑 | PC + Monitor (MES binding / SN / weighing / test) | N | Per MES/test stations | N | Y |
+| `IT / MES` | — | Server (For MES) | N | 1 | Y | N |
+| `IT / MES` | — | Switch HP 16 Port + Toten Box | N | 2 | N | N |
+| `IT / MES` | 扫码枪 | Barcode scanner (MES / packing stations) | N | Per scan stations | N | N |
+| `IT / MES` | 打印机 | Label printer (SN / giftbox / carton) | N | Per label stations | N | Y |
+| `IT / MES` | 电子秤 / 大电子秤 | Electronic scale (unit & carton weighing) | N | 1 each | N | Y |
+| `Repair area` | 防静电维修工作台 | ESD workbench with mat & grounding | N | 2 | N | Y |
+| `Repair area` | 离子风扇 | Ionizer fan | N | 2 | N | Y |
+| `Repair area` | 扫描枪 | Barcode scanner (MES repair log) | N | 2 | N | Y |
+| `Repair area` | MES 电脑 | MES repair station PC | N | 1 | N | N |
+| `Repair area` | 电批 | Electric screwdriver (bit per product) | N | 2 | N | Y |
+| `Repair area` | 放大镜台灯 | Magnifier lamp | N | 2 | N | Y |
+| `Repair area` | 加热分离台 | Heating plate / separator for rework | N | 1 | N | Y |
+| `Repair area` | 静电手环 | ESD wrist strap | N | 2 | N | Y |
+| `IQC area` | 防静电工作台 | ESD workbench with mat & grounding | N | 2 | N | Y |
+| `IQC area` | 离子风扇 | Ionizer fan | N | 1 | N | Y |
+| `IQC area` | 扫描枪 | Barcode scanner | N | 1 | N | Y |
+| `IQC area` | 电脑 | IQC PC (receiving / MES) | N | 1 | N | Y |
+| `IQC area` | 放大镜台灯 | Magnifier lamp | N | 1 | N | Y |
+| `IQC area` | 游标卡尺 | Vernier caliper | N | 1 | N | Y |
+| `Store` | 条码打印机 | Barcode printer – material / reel ID labels | N | 1 | N | Y |
+| `Store` | 手动液压搬运车 | Hand Jack Pallet | N | 2 | N | Y |
+| `Store` | 200KG 体重秤 | Weighing Scale 200KG | N | 1 | N | Y |
+| `Store` | 重型货架 | Heavy Duty Rack | N | 6 | N | Y |
+| `Store` | 无螺丝货架 | Boltless Rack | N | 4 | N | Y |
+| `Store` | 扫描枪 | Barcode scanner (receiving / issue) | N | 1 | N | Y |
+| `General` | 螺丝刀扭力测试仪 | Screw Torque HP-10 | N | 1 | N | Y |
+| `General` | ESD测试仪 | Anti-Static ESD Checker | N | 1 | N | Y |
+| `General` | 电视 | TV (line/dashboard display) | N | 2 | N | Y |
+| `General` | 笔记本电脑 | Laptop | N | 4 | N | Y |
+| `General` | 测力计 | Force Gauge | N | 1 | N | Y |

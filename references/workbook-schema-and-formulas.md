@@ -138,9 +138,9 @@ Standard 9 roles:
 ## 3. `Equipment & Aux` Sheet
 
 Header (Row 4):
-`No.` | `Category` | `Station(s)` | `Item name` | `Description (EN)` | `Custom (Y/N)` | `Qty / line` | `Lines` | `Total qty` | `Propose customer consign (Y/N)`
+`No.` | `Category` | `Station(s)` | `Item name` | `Description (EN)` | `Custom (Y/N)` | `Qty / line` | `Lines` | `Total qty` | `Propose customer consign (Y/N)` | `Shareable (Y/N)`
 
-- `Lines` (Col H): `=Summary!$B$20` (Mode A) or `=Summary!$B$23` (Mode B)
+- `Lines` (Col H): `=Summary!$B$20` (Mode A), `=Summary!$B$23` (Mode B), or `1` for facility-level shared areas (`Repair area`, `IQC area`, `Store`, `General`).
 - `Total qty` (Col I): `=IF(ISNUMBER(G<r>),G<r>*H<r>,G<r>)`
 
 Standard Categories:
@@ -148,13 +148,14 @@ Standard Categories:
 - `Test equipment`
 - `Jig & fixture (custom)`
 - `Hand tools`
-- `IT / MES`
+- `IT / MES` *(mandatory baseline)*
 - `Line infrastructure`
 - `Consumables`
 - `Process materials`
-- `IQC area`
-- `Repair area`
-- `Store`
+- `Repair area` *(mandatory baseline)*
+- `IQC area` *(mandatory baseline)*
+- `Store` *(mandatory baseline)*
+- `General` *(mandatory baseline)*
 
 ---
 

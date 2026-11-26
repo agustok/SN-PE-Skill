@@ -67,10 +67,18 @@ Choose the appropriate mode based on monthly demand vs. line capacity, and apply
 2. **Calculate Required Quantity from ST/CT**: Do not copy equipment quantities blindly—calculate `Qty / line` based on each station's **Standard Time (ST) / Cycle Time (CT)** relative to **Takt Time** (`3600 / Planned UPH`):
    - `Equipment Qty / station = ROUNDUP(Station ST (or Equipment CT) / Takt Time, 0)` (accounting for multi-slot/parallel testers if applicable, e.g., `ROUNDUP(ST / (Takt × Slots_per_Unit), 0)`).
    - Sum across all stations using the same equipment type, and cross-check against customer-provided quantities (flag discrepancies in `Customer Clarification List`).
-3. **Categorize & Classify**: List all required items across standard categories (`Production equipment`, `Test equipment`, `Jig & fixture (custom)`, `Hand tools`, `IT / MES`, `Line infrastructure`, `Consumables`, `Process materials`, `IQC area`, `Repair area`, `Store`).
+3. **Mandatory Baseline Support Equipment (IQC / Store / Repair / IT / General)**:
+   - Regardless of the project or product type, **every draft MUST include** the standard factory support equipment outside of the production line across these 5 areas (see `references/ie-pe-calculation-rules.md` for the complete mandatory item list and baseline quantities):
+     - `Repair area` (ESD workbench, ionizer fan, barcode scanner, MES repair PC, electric screwdriver, magnifier lamp, heating plate/separator, ESD wrist strap)
+     - `IQC area` (ESD workbench, ionizer fan, barcode scanner, IQC PC, magnifier lamp, vernier caliper)
+     - `Store` (barcode printer, hand jack pallet, 200KG weighing scale, heavy-duty rack, boltless rack, barcode scanner)
+     - `IT / MES` (station PCs + monitors, MES server, 16-port switch + Toten box, barcode scanners, label printers, electronic scales)
+     - `General` (Screw Torque HP-10, Anti-Static ESD Checker, TV, Laptop, Force Gauge)
+4. **Categorize & Classify**: List all required items across standard categories (`Production equipment`, `Test equipment`, `Jig & fixture (custom)`, `Hand tools`, `IT / MES`, `Line infrastructure`, `Consumables`, `Process materials`, `Repair area`, `IQC area`, `Store`, `General`).
    - Mark `Custom (Y/N)`: `Y` for product-specific jigs, fixtures, moulds, or custom holders; `N` for standard off-the-shelf equipment.
    - Mark `Propose customer consign (Y/N)`: `Y` for customer-specific testers, golden samples, RF shield boxes, and custom product-specific fixtures; `N` for standard factory/PTSN equipment and consumables.
-   - Link `Lines` dynamically to `Summary` (`Lines required`) and calculate `Total qty = Qty / line × Lines`.
+   - Mark `Shareable (Y/N)`: `Y` for facility/support equipment shared across lines or projects (e.g., IQC, Store, Repair, General, shared IT); `N` for dedicated line/station-specific items.
+   - Link `Lines` (or `Cells`) dynamically to `Summary` (`Lines required`, or `1` for facility-level IQC/Store/Repair/General items) and calculate `Total qty = Qty / line × Lines`.
 
 ### Step 5: Generate Deliverables
 1. **Excel Workbook** (`.xlsx`) with all sheets formatted cleanly, formulas intact, and `TBD`/`TBC` highlighted where inputs are missing.
