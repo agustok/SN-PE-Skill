@@ -35,7 +35,7 @@ Columns: `Market` | `Monthly` | `Annual` | `Lifecycle` | `Years` | `Annual ÷ 12
 | Effective hours / shift | `7.16` | FATP standard (430 min) |
 | Line UPH (SOP, max) | `='Process & Manpower'!K<total_row>` | SOP pitch + 10% allowance |
 | Line UPH (proposed balance, max) | `='Process & Manpower'!K<summary_total_row>` | Incl. packing (FATP est.) |
-| Planned UPH (1 shift) | `=B16` (or target UPH) | Required UPH note via `TEXT()` |
+| Planned UPH (1 shift) | `=B17*0.93` *(92%–95% productivity)* | `Line UPH × 92%–95% productivity` |
 | Max capacity / line / month (3 shifts) | `=B18*B15*B14*3` | `Planned UPH × h × days × 3` |
 | Lines required | `=ROUNDUP(B13/B19,0)` | |
 | Line utilization (3-shift basis) | `=B13/(B20*B19)` | Format as `0.0%` |

@@ -38,14 +38,16 @@ Scan all provided customer files and extract:
 - **SKU List & Packaging**: FG material codes, descriptions, colours, channels, regions, mix %, carton/giftbox specs.
 - **BOM (if provided)**: Material codes, descriptions, material type, supply type, usage qty, unit, pricing, MPQ, MOQ, procurement lead time.
 
-### Step 2: Select Capacity Planning Mode
-Choose the appropriate mode based on monthly demand vs. line capacity:
+### Step 2: Select Capacity Planning Mode & Line Productivity
+Choose the appropriate mode based on monthly demand vs. line capacity, and apply the **92%–95% Line Productivity setting** (default `93%` or `92%–95%` range unless customer specifies otherwise) to convert theoretical/SOP UPH into realistic planned output:
+- **Effective Planned UPH / Capacity**:
+  - `Planned UPH (with productivity) = Line UPH × Line Productivity (92%–95%)` (or apply `92%–95%` productivity factor to shift/monthly output).
 - **Mode A — Full-Line / Multi-Shift Capacity Sizing** (default for medium/high volume, e.g., smartphones or continuous lines):
-  - Calculate `Max capacity / line / month (3 shifts) = Planned UPH × 7.16 h × 22 days × 3 shifts`.
+  - Calculate `Max capacity / line / month (3 shifts) = Planned UPH × 7.16 h × 22 days × 3 shifts` (reflecting 92%–95% line productivity).
   - Calculate `Lines required = ROUNDUP(Planning demand / Max capacity per line, 0)`.
   - Calculate `Shifts / day required` and `Line utilization (%)`.
 - **Mode B — Low-Volume Run-Day Batching** (when monthly demand fits within 1 line in fewer than 22 run days, e.g., 2K–10K pcs/month):
-  - Set `Lines required = 1` and `Target UPH` (station-balanced).
+  - Set `Lines required = 1` and `Target UPH` (station-balanced with 92%–95% productivity).
   - Calculate `Output / shift (pcs) = Target UPH × 7.16`.
   - Calculate `Run days / month (1 shift) = ROUNDUP(Monthly demand / Output per shift, 0)`.
   - Calculate `Line loading = Run days / 22`, `Total headcount / run day`, and `Man-days / month`.
@@ -56,15 +58,19 @@ Choose the appropriate mode based on monthly demand vs. line capacity:
 2. Compute SOP baseline: `NT (SOP) = Std time / DL (SOP)` and `UPH (SOP) = 3600 / NT (SOP)`.
 3. Propose balanced operations (`Op (proposed)`, `Proposed DL`) to:
    - Include **Packing** stations (`PK1..PKn`) if omitted from customer SOP (flag as FATP estimate).
-   - Balance bottleneck stations (e.g., parallel test stations or merged low-CT stations) to achieve target **LOB ≥ 80–85%**.
+   - Balance bottleneck stations (e.g., parallel test stations or merged low-CT stations) to achieve target **LOB ≥ 80–85%** and **Line Productivity 92%–95%**.
 4. Compute **Section & Total Line Balance Summary**: `DL`, `C/T sum (s)`, `NT max (s)`, `UPH`, `LOB`, `UPPH`, and `FPY`.
 5. Compute **IDL per line per shift** using the 9-role FATP standard (Line leader, Supporter, IQC, IPQC, OQC, Material handler, Packing boy, Repair technician, TE / ME) and verify `IDL / DL ratio ≤ 30%` target.
 
-### Step 4: Equipment, Fixtures & Auxiliaries Sizing
-List all required items across standard categories (`Production equipment`, `Test equipment`, `Jig & fixture (custom)`, `Hand tools`, `IT / MES`, `Line infrastructure`, `Consumables`, `Process materials`, `IQC area`, `Repair area`, `Store`).
-- Mark `Custom (Y/N)`: `Y` for product-specific jigs, fixtures, moulds, or custom holders; `N` for standard off-the-shelf equipment.
-- Mark `Propose customer consign (Y/N)`: `Y` for customer-specific testers, golden samples, RF shield boxes, and custom product-specific fixtures; `N` for standard factory/PTSN equipment and consumables.
-- Link `Lines` dynamically to `Summary` (`Lines required`) and calculate `Total qty = Qty / line × Lines`.
+### Step 4: Equipment, Fixtures & Auxiliaries Sizing (ST/CT-Driven)
+1. **Source**: Read the **customer-provided Equipment List** first; if incomplete or not provided, extract every required equipment, tester, jig/fixture, and tool directly from the **SOP** and **Testing Plan**.
+2. **Calculate Required Quantity from ST/CT**: Do not copy equipment quantities blindly—calculate `Qty / line` based on each station's **Standard Time (ST) / Cycle Time (CT)** relative to **Takt Time** (`3600 / Planned UPH`):
+   - `Equipment Qty / station = ROUNDUP(Station ST (or Equipment CT) / Takt Time, 0)` (accounting for multi-slot/parallel testers if applicable, e.g., `ROUNDUP(ST / (Takt × Slots_per_Unit), 0)`).
+   - Sum across all stations using the same equipment type, and cross-check against customer-provided quantities (flag discrepancies in `Customer Clarification List`).
+3. **Categorize & Classify**: List all required items across standard categories (`Production equipment`, `Test equipment`, `Jig & fixture (custom)`, `Hand tools`, `IT / MES`, `Line infrastructure`, `Consumables`, `Process materials`, `IQC area`, `Repair area`, `Store`).
+   - Mark `Custom (Y/N)`: `Y` for product-specific jigs, fixtures, moulds, or custom holders; `N` for standard off-the-shelf equipment.
+   - Mark `Propose customer consign (Y/N)`: `Y` for customer-specific testers, golden samples, RF shield boxes, and custom product-specific fixtures; `N` for standard factory/PTSN equipment and consumables.
+   - Link `Lines` dynamically to `Summary` (`Lines required`) and calculate `Total qty = Qty / line × Lines`.
 
 ### Step 5: Generate Deliverables
 1. **Excel Workbook** (`.xlsx`) with all sheets formatted cleanly, formulas intact, and `TBD`/`TBC` highlighted where inputs are missing.
