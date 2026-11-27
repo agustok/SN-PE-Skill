@@ -49,11 +49,12 @@ Customer SOPs frequently cover assembly and testing (`P1..Pn`) but omit packing 
 - **Source Priority**:
   1. Read the **customer-provided Equipment List** (if supplied) and cross-check every item against the SOP/Testing Plan.
   2. If no equipment list is provided, extract all equipment, testers, jigs/fixtures, and tools directly from the **SOP** and **Testing Plan**.
-- **ST / CT-Based Quantity Calculation**:
-  Always calculate the required quantity per line using each station's **Standard Time (ST)** or **Equipment Cycle Time (CT)** vs. **Takt Time**:
+- **ST / CT-Based Quantity Calculation & Bottleneck Machine Expansion**:
+  Always calculate the required quantity per line using each station's **Standard Time (ST)** or **Equipment Cycle Time (CT)** vs. **Target Takt Time**:
   $$\text{Qty / station} = \left\lceil \frac{\text{Station ST (s) or Equipment CT (s)}}{\text{Takt (s)} \times \text{Slots per equipment}} \right\rceil$$
-  - Example: If coupling test `ST = 135 s` (or `148.5 s` with allowance) and `Takt = 16.5 s` (`218 UPH`), `ROUNDUP(148.5 / 16.5, 0) = 9` sets of CMW500 + shield box + test PC per line.
-  - Sum across all stations sharing the same equipment type, and flag any mismatch with customer-provided quantities in the **Customer Clarification List**.
+  - **Bottleneck Rule**: Whenever a testing process or machine process has `Station ST / CT > Target Takt Time`, **propose adding parallel machines/testers** (and corresponding `Proposed DL` in `Process & Manpower`) so `Proposed NT ≤ Target Takt Time` and the line remains balanced at the target UPH.
+  - Example: If coupling test `ST = 135 s` (or `148.5 s` with allowance) and `Takt = 16.5 s` (`218 UPH`), `ROUNDUP(148.5 / 16.5, 0) = 9` parallel sets of CMW500 + shield box + test PC per line.
+  - Sum across all stations sharing the same equipment type, and flag any proposed machine additions or mismatches with customer-provided quantities in the **Customer Clarification List**.
 - **Custom (`Y/N`)**:
   - `Y`: Product-specific jigs, fixtures, press molds, RF shield-box inserts, test carriers, custom assembly cradles.
   - `N`: General-purpose equipment (electric screwdrivers, ionizing air guns, label printers, weighing scales, benches, ESD wrist straps, MES scanners/PCs).
