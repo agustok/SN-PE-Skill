@@ -15,6 +15,7 @@ Whenever customer documents are incomplete, ambiguous, or inconsistent, **do not
 - [ ] Station cycle times (`Avg time (s)`) and whether allowance is already included
 - [ ] Packing SOP (giftbox, accessories, labels, IMEI/SN scan, carton spec, palletization)
 - [ ] Indonesia regulatory items (if Indonesia launch): **MKG** (Manual & Warranty Card) and **Postel / SDPPI label** (mandatory for smartphones/wireless devices) artwork, spec, and placement
+- [ ] Soldering scope boundary: confirm PCBA arrives pre-populated from SMT vendor and list only **manual soldering** items (THT/DIP, wire leads, connectors) for FATP; verify pin count & wire-prep requirements
 - [ ] Key / CTQ stations (`★`) and special environmental requirements (ESD, cleanroom class, temperature/humidity, torque specs, glue curing time)
 
 ### 3. Testing Plan & Quality (QA)

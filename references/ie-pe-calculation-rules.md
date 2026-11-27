@@ -100,3 +100,38 @@ Every FATP draft **must** include the following baseline support equipment outsi
 | `General` | 电视 | TV (line/dashboard display) | N | 2 | N | Y |
 | `General` | 笔记本电脑 | Laptop | N | 4 | N | Y |
 | `General` | 测力计 | Force Gauge | N | 1 | N | Y |
+
+## 7. Manual Soldering Scope & Component Pin-Count Reference (FATP — No SMT)
+FATP does **not** use SMT/reflow machines. Only include **manual soldering** operations in `Process & Manpower` and `Equipment & Aux`.
+
+### Scope Boundary
+- **In-Scope (Manual Soldering)**: Wire-to-board leads (speaker, mic, motor, battery, antenna), Through-Hole / DIP components (THT resistors, electrolytic capacitors, inductors, diodes, LEDs, switches, jacks, pin headers), shield-can tacking, and minor touch-up on large SMD pads (`≥ 0805 / 1206`).
+- **Out-of-Scope (SMT Required — Flag in Clarification List)**: Fine-pitch SMD ICs (`BGA`, `QFN`, `LQFP`), `0201 / 0402 / 0603` passive arrays, full 24-pin USB-C SMD pins, or mass PCBA population. Assume PCBA arrives pre-populated from SMT supplier unless clarified.
+
+### Average Pin / Lead Count by Component Type
+When estimating manual soldering cycle time (`CT`) from a BOM/SOP without station timing:
+$$\text{Manual Solder CT (s)} \approx \text{Prep/Pick/Place (3–5 s)} + (\text{Pin Count} \times 2.5\text{–}3.5\text{ s/joint}) + \text{Visual/Clean (2–3 s)}$$
+
+| Component Type | Typical Package / Mounting | Avg. Pin / Joint Count | Manual Soldering Feasibility |
+|---|---|---|---|
+| Resistor (THT) | Axial / DIP | `2 pins` | Yes (Manual / DIP) |
+| Capacitor (Electrolytic / Film) | Radial / Axial THT | `2 pins` | Yes (Manual / DIP) |
+| Diode / Zener / TVS (THT) | Axial / DO-41 | `2 pins` | Yes (Manual / DIP) |
+| LED (THT) | 3mm / 5mm (or RGB) | `2 pins` (`4 pins` RGB) | Yes (Manual / DIP) |
+| Inductor / Choke (THT) | Radial / Toroid | `2 pins` (`4 pins` choke) | Yes (Manual / DIP) |
+| Transistor / MOSFET | TO-92 / TO-220 | `3 pins` | Yes (Manual / DIP) |
+| Tactile / Slide Switch / Button | THT / Hybrid | `2–4 pins` (+ `2` tabs) | Yes (Manual) |
+| Wire Leads (Speaker / Mic / Motor / Battery) | Flying wire to PCB pad | `2 wires` (`+ / -`, `2 joints`) | Yes (Manual) |
+| DC Power / Barrel Jack | THT | `3 pins` | Yes (Manual) |
+| 3.5 mm Audio / Phone Jack | THT / Hybrid | `5–6 pins` | Yes (Manual) |
+| Pin Header / Wire Connector (JST/PH) | THT | `2–8 pins` (per pin count) | Yes (Manual) |
+| Potentiometer / Rotary Encoder | THT | `3–5 pins` (+ `2` tabs) | Yes (Manual) |
+| Large SMD Discrete (`0805` / `1206`) | SMD (touch-up/rework only) | `2 pads` | Touch-up only |
+| Small SMD (`0201` / `0402` / `0603`) / BGA / QFN | SMD | Multi-pin / fine-pitch | **No (SMT only)** |
+
+### Required Equipment for Manual Soldering Stations
+Include in `Equipment & Aux` when manual soldering stations exist:
+- Temperature-controlled ESD soldering station + tips (`1` per station/operator)
+- Fume extractor (`1` per station or shared dual-arm)
+- Soldering fixture / PCB holder (`Custom = Y` if product-specific)
+- Consumables: Lead-free solder wire (`SAC305`), flux pen/dispenser, tip cleaner/brass sponge.
