@@ -104,12 +104,12 @@ Every FATP draft **must** include the following baseline support equipment outsi
 | `General` | 笔记本电脑 | Laptop | N | 4 | N | Y |
 | `General` | 测力计 | Force Gauge | N | 1 | N | Y |
 
-## 7. Manual Soldering Scope & Component Pin-Count Reference (FATP — No SMT)
-FATP does **not** use SMT/reflow machines. Only include **manual soldering** operations in `Process & Manpower` and `Equipment & Aux`.
+## 7. Manual Soldering Scope & Component Pin-Count Reference (FATP — No SMT, Wave Soldering, or Dipping)
+FATP (Final Assembly, Test, and Pack) **does NOT have SMT, Reflow, Wave Soldering, or Dipping machines**. Only include **manual soldering** on components that support manual soldering in `Process & Manpower` and `Equipment & Aux`.
 
 ### Scope Boundary
-- **In-Scope (Manual Soldering)**: Wire-to-board leads (speaker, mic, motor, battery, antenna), Through-Hole / DIP components (THT resistors, electrolytic capacitors, inductors, diodes, LEDs, switches, jacks, pin headers), shield-can tacking, and minor touch-up on large SMD pads (`≥ 0805 / 1206`).
-- **Out-of-Scope (SMT Required — Flag in Clarification List)**: Fine-pitch SMD ICs (`BGA`, `QFN`, `LQFP`), `0201 / 0402 / 0603` passive arrays, full 24-pin USB-C SMD pins, or mass PCBA population. Assume PCBA arrives pre-populated from SMT supplier unless clarified.
+- **In-Scope (Manual Soldering Only)**: Wire-to-board leads (speaker, mic, motor, battery, antenna), simple manual THT/connector joints, shield-can tacking, and minor touch-up on large SMD pads (`≥ 0805 / 1206`).
+- **Out-of-Scope (Exclude from Process & Flag in Clarification List)**: Any process or component requiring **SMT**, **Reflow**, **Wave Soldering**, or **Dipping** (e.g., fine-pitch SMD ICs `BGA`/`QFN`/`LQFP`, `0201`/`0402`/`0603` arrays, full 24-pin USB-C SMD, or mass DIP wave-soldered boards). **Do NOT count these in CT, DL, or Equipment**—remove them from our process and list them in the **Customer Clarification List** stating that FATP does not have SMT / wave soldering / dipping equipment.
 
 ### Average Pin / Lead Count by Component Type
 When estimating manual soldering cycle time (`CT`) from a BOM/SOP without station timing:
