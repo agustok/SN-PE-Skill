@@ -86,8 +86,8 @@ Choose the appropriate mode based on monthly demand vs. line capacity, and apply
      - `General` (Screw Torque HP-10, Anti-Static ESD Checker, TV, Laptop, Force Gauge)
 4. **Categorize & Classify**: List all required items across standard categories (`Production equipment`, `Test equipment`, `Jig & fixture (custom)`, `Hand tools`, `IT / MES`, `Line infrastructure`, `Consumables`, `Process materials`, `Repair area`, `IQC area`, `Store`, `General`).
    - Mark `Custom (Y/N)`: `Y` for product-specific jigs, fixtures, moulds, or custom holders; `N` for standard off-the-shelf equipment.
-   - Mark `Propose customer consign (Y/N)`: `Y` for customer-specific testers, golden samples, RF shield boxes, and custom product-specific fixtures; `N` for standard factory/PTSN equipment and consumables.
    - Mark `Shareable (Y/N)`: `Y` for facility/support equipment shared across lines or projects (e.g., IQC, Store, Repair, General, shared IT); `N` for dedicated line/station-specific items.
+   - **Commercial Model Out of Scope (`Consign / Buy & Sell / Turnkey`)**: Do **NOT** calculate or decide commercial business terms (whether equipment or materials are Consign, Buy & Sell, or Turnkey). Leave `Propose customer consign` as `TBD (Business)` (or blank for Business review) and hand commercial decisions back to the Business Side.
    - Link `Lines` (or `Cells`) dynamically to `Summary` (`Lines required`, or `1` for facility-level IQC/Store/Repair/General items) and calculate `Total qty = Qty / line × Lines`.
 
 ### Step 5: Generate Deliverables

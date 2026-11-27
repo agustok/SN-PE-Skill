@@ -60,9 +60,8 @@ Customer SOPs frequently cover assembly and testing (`P1..Pn`) but omit packing 
 - **Custom (`Y/N`)**:
   - `Y`: Product-specific jigs, fixtures, press molds, RF shield-box inserts, test carriers, custom assembly cradles.
   - `N`: General-purpose equipment (electric screwdrivers, ionizing air guns, label printers, weighing scales, benches, ESD wrist straps, MES scanners/PCs).
-- **Propose Customer Consign (`Y/N`)**:
-  - `Y`: Dedicated test equipment (e.g., CMW500, audio analyzers, RF shield boxes, test PCs with proprietary SW), golden samples, and custom product-specific jigs/fixtures (`Custom = Y`).
-  - `N`: Standard factory/PTSN-supplied production equipment, hand tools, IT/MES hardware, line infrastructure, and consumables.
+- **Commercial Business Process (`Consign / Buy & Sell / Turnkey`) — Business Side Only**:
+  - Do **NOT** calculate or decide commercial business models (Consign, Buy & Sell, or Turnkey) for equipment or materials. Leave `Propose customer consign` as `TBD (Business)` for the Business Side to determine.
 - **Shareable (`Y/N`)**:
   - `Y`: Facility/support equipment shareable across lines or projects (IQC, Store, Repair, General, shared IT).
   - `N`: Dedicated line/station equipment or consumables.

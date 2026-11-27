@@ -31,8 +31,8 @@ Whenever customer documents are incomplete, ambiguous, or inconsistent, **do not
 
 ### 5. BOM & Materials
 - [ ] Complete multi-level BOM with material codes, usage qty, unit, MPQ, MOQ, and lead time
-- [ ] Consigned / customer-supplied materials vs. turnkey procurement scope (SKD/CKD/Turnkey)
 - [ ] Consumables & process materials specification (thermal gel, glue type, tape, solder, etc.)
+- *(Note: Commercial business model — Consign / Buy & Sell / Turnkey — is handled by the Business Side, not calculated by IE/PE.)*
 
 ---
 

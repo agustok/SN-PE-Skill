@@ -6,7 +6,7 @@
 - **UPH & Capacity Sizing**: Line productivity (92%–95%), 1-line / 1-shift priority (22 working days, 7.16 effective hours/shift), or low-volume run-day batching
 - **CT & Line Balancing**: Station-by-station cycle time (CT), standard time (+10% allowance), Takt Time, LOB, UPPH, FPY, plus mandatory **MKG & Postel label** processes for Indonesia launches
 - **DL / IDL Headcount**: Direct Labor (DL) per section and Indirect Labor (IDL ≈ 30% of DL)
-- **Investment & Equipment Sizing**: ST/CT-driven production/test equipment, custom jigs/fixtures, customer consign vs. factory supply, plus mandatory **IQC, Store, Repair, IT/MES, and General** baseline equipment
+- **Investment & Equipment Sizing**: ST/CT-driven production/test equipment, custom jigs/fixtures (commercial model — Consign / Buy & Sell / Turnkey — left to Business Side), plus mandatory **IQC, Store, Repair, IT/MES, and General** baseline equipment
 - **Missing-Data Audit**: Automatic **Customer Clarification List** for any missing or ambiguous customer inputs
 
 ---
