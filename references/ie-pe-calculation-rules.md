@@ -52,8 +52,10 @@ Customer SOPs frequently cover assembly and testing (`P1..Pn`) but omit packing 
 - **ST / CT-Based Quantity Calculation & Bottleneck Machine Expansion**:
   Always calculate the required quantity per line using each station's **Standard Time (ST)** or **Equipment Cycle Time (CT)** vs. **Target Takt Time**:
   $$\text{Qty / station} = \left\lceil \frac{\text{Station ST (s) or Equipment CT (s)}}{\text{Takt (s)} \times \text{Slots per equipment}} \right\rceil$$
-  - **Bottleneck Rule**: Whenever a testing process or machine process has `Station ST / CT > Target Takt Time`, **propose adding parallel machines/testers** (and corresponding `Proposed DL` in `Process & Manpower`) so `Proposed NT ≤ Target Takt Time` and the line remains balanced at the target UPH.
-  - Example: If coupling test `ST = 135 s` (or `148.5 s` with allowance) and `Takt = 16.5 s` (`218 UPH`), `ROUNDUP(148.5 / 16.5, 0) = 9` parallel sets of CMW500 + shield box + test PC per line.
+  - **Bottleneck & Multi-Machine Handling Rule**: Whenever a testing process or machine process has `Station ST / CT > Target Takt Time`, **propose adding parallel machines/testers** in `Equipment & Aux` so machine capacity matches the target UPH. **Do NOT add 1 operator per machine 1:1**—**1 DL can handle 2–4 machines** depending on machine size/layout and manual load/unload time:
+    $$\text{Proposed DL} = \max\left(\left\lceil \frac{\text{Manual Load/Unload Time (s)}}{\text{Takt (s)}} \right\rceil,\; \left\lceil \frac{N_{\text{machines}}}{\text{Machines per DL (2–4)}} \right\rceil\right)$$
+    *(Use `2` machines/DL for large machines/presses; `3–4` machines/DL for compact benchtop testers, RF shield boxes, or auto-dispensers.)*
+  - Example: If coupling test `ST = 135 s` (`148.5 s` with allowance) and `Takt = 16.5 s` (`218 UPH`), `ROUNDUP(148.5 / 16.5, 0) = 9` parallel sets of CMW500 + shield box + test PC per line, operated by `3 DL` (at ~3 testers/DL) rather than 9 DL.
   - Sum across all stations sharing the same equipment type, and flag any proposed machine additions or mismatches with customer-provided quantities in the **Customer Clarification List**.
 - **Custom (`Y/N`)**:
   - `Y`: Product-specific jigs, fixtures, press molds, RF shield-box inserts, test carriers, custom assembly cradles.
